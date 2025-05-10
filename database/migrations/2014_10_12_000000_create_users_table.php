@@ -10,16 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); // id auto-incrémentée (clé primaire)
+            $table->string('name'); // le nom de l'utilisateur
+            $table->string('email')->unique(); // l'email, unique
+            $table->timestamp('email_verified_at')->nullable(); // utilisé si tu veux la vérification d’email
+            $table->string('password'); // le mot de passe hashé
+            $table->enum('role', ['admin_general', 'technicien']); // le rôle (ajouté par toi)
+            $table->rememberToken(); // utilisé pour "remember me" (connexion persistante)
+            $table->timestamps(); // champs created_at et updated_at
         });
+        
     }
 
     /**
