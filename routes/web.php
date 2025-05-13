@@ -9,6 +9,7 @@ use App\Http\Controllers\TechnicienController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\ActivityLogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,8 @@ Route::middleware(['auth', 'role:admin_general'])->group(function () {
     Route::get('/admin/techniciens/{id}/edit', [TechnicienController::class, 'edit'])->name('admin.techniciens.edit');
     Route::put('/admin/techniciens/{id}', [TechnicienController::class, 'update'])->name('admin.techniciens.update');
     Route::delete('/admin/techniciens/{id}', [TechnicienController::class, 'destroy'])->name('admin.techniciens.destroy');
+
+    Route::get('/admin/activity-logs', [ActivityLogController::class, 'index'])->name('admin.activityLogs');
 
 });
 /*******************************************************TECHNICIEN*******************************************************/

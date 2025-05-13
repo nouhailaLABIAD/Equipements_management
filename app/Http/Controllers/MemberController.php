@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\Member;
 use App\Models\Affectation;
 use App\Models\Equipement;
+use App\Helpers\ActivityLogger;
 
 class MemberController extends Controller
 {
     public function index()
     {
+        ActivityLogger::log('Consultation des membres', request()->path());
         $members = Member::all();
         return view('technicien.members.index', compact('members'));
     }
@@ -20,6 +22,7 @@ class MemberController extends Controller
      */
     public function create()
     {
+        ActivityLogger::log('Appel du fomulaire de création d\'un memebre ', request()->path());
         return view('technicien.members.create');
     }
 
@@ -34,6 +37,7 @@ class MemberController extends Controller
             'matricule' => 'required|unique:members',
             'centre' => 'required',
         ]);
+        ActivityLogger::log('Création d\'un nouveau  membre', request()->path());
 
         Member::create($request->all());
 
