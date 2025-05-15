@@ -8,6 +8,7 @@ use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Affectation;
 use App\Models\User;
+use App\Helpers\ActivityLogger;
 
 class AffectationController extends Controller
 {
@@ -15,7 +16,7 @@ class AffectationController extends Controller
     {
         // On récupère les équipements non affectés
         $equipements = Equipement::whereNotIn('etat', ['Affecté', 'hors service'])->get();
-
+        ActivityLogger::log('Consultation de tous les équipements à affecter', request()->path());
         return view('technicien.affectations.index', compact('equipements'));
     }
     public function create($equipement_id)
@@ -23,6 +24,7 @@ class AffectationController extends Controller
     $equipement = Equipement::findOrFail($equipement_id);
     $members = Member::all();
     $techniciens = User::where('role', 'technicien')->get(); 
+    ActivityLogger::log('Appel du formulaire d\'affectation d\'un equipement', request()->path());
     return view('technicien.affectations.create', compact('equipement', 'members', 'techniciens'));
 }
 
@@ -50,8 +52,8 @@ public function store(Request $request)
     } else {
         return back()->with('error', 'Équipement non trouvé.');
     }
-
-    return redirect()->route('historiques.index')->with('success', 'Équipement affecté avec succès.');
+    ActivityLogger::log('Affectation d\'un equipement', request()->path());
+    return redirect()->route('affectations.index')->with('success', 'Équipement affecté avec succès.');
 }
 
 }

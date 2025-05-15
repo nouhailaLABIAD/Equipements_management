@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EquipementsExport;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Helpers\ActivityLogger;
 
 class EquipementController extends Controller
 {
@@ -85,19 +86,20 @@ public function create()
         return view('admin.equipements.edit', compact('equipement', 'stocks'));
     }
     public function exportExcel()
-{
-    return Excel::download(new EquipementsExport, 'equipements.xlsx');
-}
+    {
+        return Excel::download(new EquipementsExport, 'equipements.xlsx');
+    }
 
-public function exportPDF()
-{
-    $equipements = Equipement::all();
-    $pdf = Pdf::loadView('admin.equipements.pdf', compact('equipements'));
-    return $pdf->download('equipements.pdf');
-}
+    public function exportPDF()
+    {
+        $equipements = Equipement::all();
+        $pdf = Pdf::loadView('admin.equipements.pdf', compact('equipements'));
+        return $pdf->download('equipements.pdf');
+    }
     // Afficher le formulaire
     public function editEtat($id)
     {
+        ActivityLogger::log('Appel du formulaire d\édition d\état d\'un equipement', request()->path());
         $equipement = Equipement::findOrFail($id);
         return view('technicien.members.edit-etat', compact('equipement'));
     }
@@ -112,7 +114,7 @@ public function exportPDF()
         $equipement = Equipement::findOrFail($id);
         $equipement->etat = $request->etat;
         $equipement->save();
-
+        ActivityLogger::log('Edition d\état d\'un equipement', request()->path());
         return redirect()->back()->with('success', 'État mis à jour avec succès.');
     }
     public function historique($id)

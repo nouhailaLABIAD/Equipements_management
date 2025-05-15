@@ -50,6 +50,7 @@ class MemberController extends Controller
     public function edit($id)
     {
         $member = Member::findOrFail($id);
+        ActivityLogger::log('Appel du fomulaire d\'éditon d\'un memebre', request()->path());
         return view('technicien.members.edit', compact('member'));
     }
 
@@ -66,7 +67,8 @@ class MemberController extends Controller
             'matricule' => 'required|unique:members,matricule,' . $member->id,
             'centre' => 'required',
         ]);
-    
+        ActivityLogger::log('Edition d\'un memebre', request()->path());
+
         $member->update($request->all());
     
         return redirect()->route('members.index')->with('success', 'Membre modifié avec succès.');
@@ -80,7 +82,7 @@ class MemberController extends Controller
     {
         $member = Member::findOrFail($id);
         $member->delete();
-
+        ActivityLogger::log('Suppression d\'un memebre', request()->path());
         return redirect()->route('members.index')->with('success', 'Membre supprimé avec succès.');
     }
 

@@ -100,5 +100,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/affectations', [AffectationController::class, 'index'])->name('affectations.index');
     Route::get('/affectations/create/{equipement}', [AffectationController::class, 'create'])->name('technicien.affectations.create');
     Route::post('/affectations', [AffectationController::class, 'store'])->name('technicien.affectations.store');
-
+    
 });
