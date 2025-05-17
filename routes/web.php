@@ -47,6 +47,7 @@ Route::middleware(['auth', 'role:admin_general'])->group(function () {
     Route::delete('/admin/stocks/{stock}', [StockController::class, 'destroy'])->name('admin.stocks.destroy');
     Route::get('/admin/stocks/export/pdf', [StockController::class, 'exportPdf'])->name('admin.stocks.export.pdf');
     Route::get('/admin/stocks/export/excel', [StockController::class, 'exportExcel'])->name('admin.stocks.export.excel');
+    Route::post('/stocks/import-excel', [StockController::class, 'importExcel'])->name('stocks.importExcel');
     /*******************************************************EQUIPEMENTS*******************************************************/
     // Afficher tous les équipements
     Route::get('equipements', [EquipementController::class, 'index'])->name('equipements.index');
@@ -64,6 +65,9 @@ Route::middleware(['auth', 'role:admin_general'])->group(function () {
     Route::delete('equipements/{equipement}', [EquipementController::class, 'destroy'])->name('admin.equipements.destroy');
     Route::get('/equipements/export/pdf', [EquipementController::class, 'exportPDF'])->name('equipements.export.pdf');
     Route::get('/equipements/export/excel', [EquipementController::class, 'exportExcel'])->name('equipements.export.excel');
+    
+    Route::post('/equipements/import', [EquipementController::class, 'importExcel'])->name('admin.equipements.import');
+
     /*******************************************************Historique des équipements*******************************************************/
     Route::get('/historiques/{id}', [EquipementController::class, 'historique'])->name('historiques.index');
     Route::get('/historiques/{id}/export/pdf', [HistoriqueController::class, 'exportPdf'])->name('historiques.export.pdf');

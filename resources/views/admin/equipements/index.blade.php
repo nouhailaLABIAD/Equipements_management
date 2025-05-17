@@ -13,6 +13,7 @@
             </a>
         </div>
 
+
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
@@ -24,6 +25,12 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">État</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Historique</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Type d'équipement
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            N° Marché
+                        </th>
 
                     </tr>
                 </thead>
@@ -60,6 +67,13 @@
                             </a>
 
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $equipement->stock?->type_equipement ?? '—' }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $equipement->stock?->numero_marche ?? '—' }}
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>

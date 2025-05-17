@@ -34,13 +34,35 @@
                     <label for="date_arrivee" class="block font-medium text-gray-700">Date d'arrivée</label>
                     <input type="date" name="date_arrivee" class="w-full border rounded px-3 py-2" required>
                 </div>
+                <div class="mb-4">
+                    <label for="numero_marche" class="block font-medium text-gray-700">Numéro de marché</label>
+                    <input type="text" name="numero_marche" id="numero_marche" class="w-full border rounded px-3 py-2" required>
+                </div>
 
                 <div class="flex justify-end">
                     <button type="submit" class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
                         Ajouter
                     </button>
                 </div>
+
             </form>
+            
+            <!-- FORMULAIRE D'IMPORT EXCEL -->
+        <div class="bg-gray-100 p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-2">Importer plusieurs stocks via un fichier Excel</h3>
+            <form action="{{ route('stocks.importExcel') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="flex items-center space-x-4">
+                    <input type="file" name="excel_file" accept=".xlsx,.xls"
+                           class="border border-gray-300 rounded px-3 py-2 w-full" required>
+                    <button type="submit"
+                            class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
+                        📥 Importer Excel
+                    </button>
+                </div>
+            </form>
+        </div>
+
         </div>
     </div>
 </x-app-layout>

@@ -17,6 +17,7 @@ class Stock extends Model
         'configuration',
         'quantite',
         'date_arrivee',
+        'numero_marche',
     ];
     public function equipements()
     {

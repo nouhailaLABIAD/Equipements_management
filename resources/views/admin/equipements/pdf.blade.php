@@ -19,6 +19,7 @@
                 <th>Date acquisition</th>
                 <th>État</th>
                 <th>Stock</th>
+                <th>N° Marché</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                     <td>{{ $e->date_acquisition }}</td>
                     <td>{{ $e->etat }}</td>
                     <td>{{ $e->stock->type_equipement ?? '' }}</td>
+                    <td>{{ $e->stock->numero_marche ?? '' }}</td> 
                 </tr>
             @endforeach
         </tbody>

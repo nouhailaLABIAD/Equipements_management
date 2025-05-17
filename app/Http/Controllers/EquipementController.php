@@ -7,8 +7,10 @@ use App\Models\Stock;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EquipementsExport;
+use App\Imports\EquipementsImport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Helpers\ActivityLogger;
+use Illuminate\Support\Facades\Log;
 
 class EquipementController extends Controller
 {
@@ -21,7 +23,7 @@ class EquipementController extends Controller
     // Passer les équipements à la vue Blade
     return view('admin.equipements.index', compact('equipements'));
 }
-
+ 
 public function create()
 {
     $stocks = Stock::all();  // Récupérer tous les stocks disponibles
@@ -90,12 +92,13 @@ public function create()
         return Excel::download(new EquipementsExport, 'equipements.xlsx');
     }
 
-    public function exportPDF()
+    public function exportPdf()
     {
-        $equipements = Equipement::all();
+        $equipements = Equipement::with('stock')->get(); // relation stock chargée
         $pdf = Pdf::loadView('admin.equipements.pdf', compact('equipements'));
         return $pdf->download('equipements.pdf');
     }
+
     // Afficher le formulaire
     public function editEtat($id)
     {
@@ -122,7 +125,19 @@ public function create()
         $equipement = Equipement::with(['affectations.member', 'affectations.user'])->findOrFail($id);
         return view('admin.historiques.index', compact('equipement'));
     }
+   public function importExcel(Request $request)
+{
+    $request->validate([
+        'excel_file' => 'required|file|mimes:xlsx,xls'
+    ]);
 
+    Log::info('Début import Excel');
 
+    Excel::import(new EquipementsImport, $request->file('excel_file'));
+
+    Log::info('Fin import Excel');
+
+    return redirect()->route('equipements.index')->with('success', 'Fichier importé avec succès.');
+}
 
 }

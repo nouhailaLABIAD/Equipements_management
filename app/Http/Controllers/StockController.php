@@ -7,6 +7,8 @@ use App\Models\Stock;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\StocksExport;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
+use App\Imports\StocksImport;
 
 
 
@@ -37,6 +39,7 @@ class StockController extends Controller
             'configuration' => 'required|string',
             'quantite' => 'required|integer|min:1',
             'date_arrivee' => 'required|date',
+            'numero_marche' => 'nullable|string',
         ]);
     
         Stock::create($validated);
@@ -81,6 +84,8 @@ public function update(Request $request, $id)
         'configuration' => 'required|string',
         'quantite' => 'required|integer|min:0',
         'date_arrivee' => 'required|date',
+        'numero_marche' => 'nullable|string',
+
     ]);
 
     $stock = Stock::findOrFail($id);
@@ -101,7 +106,20 @@ public function exportPdf()
     return $pdf->download('stocks.pdf');
 }
 
+public function importExcel(Request $request)
+{
+    $request->validate([
+        'excel_file' => 'required|file|mimes:xlsx,xls'
+    ]);
 
+    Log::info("Début import stocks Excel");
+
+    Excel::import(new StocksImport, $request->file('excel_file'));
+
+    Log::info("Fin import stocks Excel");
+
+    return redirect()->route('stocks.index')->with('success', 'Stocks importés avec succès.');
+}
 
 
 

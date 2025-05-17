@@ -35,6 +35,12 @@
                     <label for="date_arrivee" class="block text-sm font-medium text-gray-700">Date d'arrivée</label>
                     <input type="date" name="date_arrivee" id="date_arrivee" value="{{ old('date_arrivee', $stock->date_arrivee) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
                 </div>
+                <div class="mb-4">
+                    <label for="numero_marche" class="block text-sm font-medium text-gray-700">Numéro de marché</label>
+                    <input type="text" name="numero_marche" id="numero_marche"
+                        value="{{ old('numero_marche', $stock->numero_marche ?? '') }}"
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                </div>
 
                 <div class="flex justify-end">
                     <a href="{{ route('stocks.index') }}" class="mr-4 bg-gray-200 px-4 py-2 rounded">Annuler</a>

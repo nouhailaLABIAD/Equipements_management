@@ -23,6 +23,7 @@
                 <th>Type</th>
                 <th>Référence</th>
                 <th>Configuration</th>
+                <th>N° Marché</th>
                 <th>Quantité</th>
                 <th>Date d'arrivée</th>
             </tr>
@@ -33,6 +34,7 @@
                     <td>{{ $stock->type_equipement }}</td>
                     <td>{{ $stock->reference }}</td>
                     <td>{{ $stock->configuration }}</td>
+                    <td>{{ $stock->numero_marche }}</td>
                     <td>{{ $stock->quantite }}</td>
                     <td>{{ $stock->date_arrivee }}</td>
                 </tr>
