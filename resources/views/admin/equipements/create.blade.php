@@ -14,7 +14,7 @@
                 <div class="mb-4">
                     <label for="marque" class="block text-sm font-medium text-gray-700">Marque</label>
                     <input type="text" name="marque" id="marque" class="mt-1 block w-full" required>
-                </div>
+                </div> 
 
                 <div class="mb-4">
                     <label for="reference" class="block text-sm font-medium text-gray-700">Référence</label>
