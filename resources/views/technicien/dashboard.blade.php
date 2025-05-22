@@ -25,14 +25,18 @@
     <div class="bg-white shadow rounded-xl p-4">
         <h3 class="text-lg font-semibold text-gray-700 mb-4">🧰 Mes équipements affectés</h3>
         <ul class="divide-y divide-gray-200 max-h-64 overflow-y-auto">
-            @forelse ($equipements as $equipement)
-                <li class="py-2 flex justify-between items-center">
-                    <span>{{ $equipement->nom }} - <span class="italic">{{ $equipement->etat }}</span></span>
-                    <a href="{{ route('equipements.edit', $equipement->id) }}" class="text-blue-600 hover:underline text-sm">Modifier état</a>
-                </li>
-            @empty
-                <li class="py-2 text-gray-500">Aucun équipement affecté.</li>
-            @endforelse
+            @foreach ($equipements as $equipement)
+    <li class="py-2 flex justify-between items-center">
+        <div>
+            {{ $equipement->marque }} - <span class="italic">{{ $equipement->etat }}</span>
+            <br>
+            <small>Date d'affectation : 
+                {{ $equipement->affectations->first() ? $equipement->affectations->first()->created_at->format('d/m/Y') : 'N/A' }}
+            </small>
+        </div>
+    </li>
+@endforeach
+
         </ul>
     </div>
 

@@ -10,6 +10,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\HistoriqueController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\ChatbotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,9 @@ Route::middleware(['auth', 'role:admin_general'])->group(function () {
 
     Route::get('/admin/activity-logs', [ActivityLogController::class, 'index'])->name('admin.activityLogs');
 
+    Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
+
 });
 /*******************************************************TECHNICIEN*******************************************************/
 
@@ -104,5 +108,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/affectations', [AffectationController::class, 'index'])->name('affectations.index');
     Route::get('/affectations/create/{equipement}', [AffectationController::class, 'create'])->name('technicien.affectations.create');
     Route::post('/affectations', [AffectationController::class, 'store'])->name('technicien.affectations.store');
+
+    Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
+Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
     
 });
+
+

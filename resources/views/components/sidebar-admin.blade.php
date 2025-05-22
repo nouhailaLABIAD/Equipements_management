@@ -4,6 +4,6 @@
     <li><a href="{{ route('equipements.index') }}">Gestion Equipements</a></li> <!-- Lien vers la gestion des équipements -->
     <li><a href="{{ route('techniciens.index') }}">Gestion Techniciens</a></li>
     <li><a href="{{ route('admin.activityLogs') }}">Historique du technicien</a></li>
-
+    <li><a href="{{ route('chatbot.index') }}">Chatbot</a></li>
 </ul>
 

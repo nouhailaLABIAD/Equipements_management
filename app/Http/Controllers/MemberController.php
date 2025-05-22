@@ -11,11 +11,22 @@ use App\Helpers\ActivityLogger;
 class MemberController extends Controller
 {
     public function index()
-    {
-        ActivityLogger::log('Consultation des membres', request()->path());
-        $members = Member::all();
-        return view('technicien.members.index', compact('members'));
-    }
+{
+    ActivityLogger::log('Consultation des membres', request()->path());
+
+    $search = request('search');
+
+    $members = Member::when($search, function ($query, $search) {
+        $query->where(function ($q) use ($search) {
+            $q->where('nom', 'like', "%{$search}%")
+              ->orWhere('prenom', 'like', "%{$search}%")
+              ->orWhere('matricule', 'like', "%{$search}%");
+        });
+    })->get();
+
+    return view('technicien.members.index', compact('members'));
+}
+
 
     /**
      * Afficher le formulaire pour ajouter un membre.

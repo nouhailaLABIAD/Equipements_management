@@ -19,11 +19,22 @@ class StockController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $stocks = Stock::all();
-        return view('admin.stocks.index', compact('stocks'));
+   public function index(Request $request)
+{
+    $query = Stock::query();
+
+    if ($search = $request->input('search')) {
+        $query->where(function ($q) use ($search) {
+            $q->where('type_equipement', 'like', "%{$search}%")
+              ->orWhere('reference', 'like', "%{$search}%");
+        });
     }
+
+    $stocks = $query->paginate(10); // ou simple get()
+
+    return view('admin.stocks.index', compact('stocks'));
+}
+
 
     
     public function create()

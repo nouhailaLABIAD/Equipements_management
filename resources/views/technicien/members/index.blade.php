@@ -8,9 +8,24 @@
         </h2>
     </x-slot>
 
-    <div class="py-6">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('technicien.members.create') }}" class="bg-blue-600 text-black px-4 py-2 rounded">Ajouter un Membre</a>
+    <div class="py-6 px-4">
+         <div class="flex justify-between mb-4 items-center">
+    <!-- Formulaire de recherche -->
+    <form method="GET" action="{{ route('members.index') }}" class="flex items-center space-x-2 w-full md:w-auto">
+        <input type="text" name="search" placeholder="Rechercher par nom, prénom ou matricule"
+            value="{{ request('search') }}"
+            class="border rounded px-4 py-2" 
+    style="width: 500px;" >
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+             🔍
+        </button>
+    </form>
+
+    <!-- Bouton Ajouter un membre -->
+    <a href="{{ route('technicien.members.create') }}"  class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded whitespace-nowrap">
+        + Ajouter un Membre
+    </a>
+</div>
 
             <div class="mt-4">
                 <table class="min-w-full bg-white border border-gray-200">

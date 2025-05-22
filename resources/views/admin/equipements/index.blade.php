@@ -6,12 +6,30 @@
     </x-slot>
 
     <div class="py-6 px-4">
-        <div class="flex justify-end mb-4">
-            <a href="{{ route('admin.equipements.create') }}" 
-            class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
-                + Ajouter un équipement
-            </a>
-        </div>
+         <div class="flex justify-between mb-4 items-center">
+    <!-- Formulaire de recherche -->
+    <form method="GET" action="{{ route('equipements.index') }}" class="flex flex-grow items-center space-x-2">
+        <input
+            type="text"
+            name="search"
+            placeholder="Rechercher par marque, référence ou état..."
+            value="{{ request('search') }}"
+            class="border rounded px-4 py-2" 
+    style="width: 500px;" 
+        />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">
+            🔍
+        </button>
+    </form>
+
+    <!-- Bouton Ajouter -->
+    <a href="{{ route('admin.equipements.create') }}" 
+       class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded whitespace-nowrap">
+        + Ajouter un équipement
+    </a>
+</div>
+
+        
 
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">

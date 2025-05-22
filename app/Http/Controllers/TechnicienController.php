@@ -10,11 +10,22 @@ class TechnicienController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $techniciens = User::where('role', 'technicien')->get();
-        return view('admin.techniciens.index', compact('techniciens'));
+    public function index(Request $request)
+{
+    $query = User::where('role', 'technicien');
+
+    if ($search = $request->input('search')) {
+        $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', "%{$search}%")
+              ->orWhere('email', 'like', "%{$search}%");
+        });
     }
+
+    $techniciens = $query->get(); // Ou ->paginate(10) si tu veux paginer
+
+    return view('admin.techniciens.index', compact('techniciens'));
+}
+
 
     public function create()
     {

@@ -6,10 +6,26 @@
     </x-slot>
 
     <div class="py-6 px-4">
-    <div class="flex justify-end mb-4">
+         <div class="flex justify-between mb-4 items-center">
+        <!-- Formulaire de recherche -->
+        <form method="GET" action="{{ route('stocks.index') }}" class="flex space-x-2 w-2/3">
+            <input
+    type="text"
+    name="search"
+    placeholder="Rechercher par type ou référence..."
+    value="{{ request('search') }}"
+    class="border rounded px-4 py-2" 
+    style="width: 500px;"  
+/>
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 rounded">
+                🔍 Rechercher
+            </button>
+        </form>
+
+        <!-- Bouton Ajouter un stock -->
         <a href="{{ route('admin.stocks.create') }}" 
-        class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
-            + Ajouter un stock 
+           class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
+            + Ajouter un stock
         </a>
     </div>
 
@@ -61,6 +77,10 @@
                     
                 </tbody>
             </table>
+            <div class="mt-4">
+    {{ $stocks->withQueryString()->links() }}
+</div>
+
         </div>
         
     </div>

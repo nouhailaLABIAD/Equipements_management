@@ -15,14 +15,23 @@ use Illuminate\Support\Facades\Log;
 class EquipementController extends Controller
 {
     // Afficher tous les équipements
-    public function index()
-    {
-        // Récupérer tous les équipements
-        $equipements = Equipement::all();
+   public function index(Request $request)
+{
+    $query = Equipement::with('stock');
 
-        // Passer les équipements à la vue Blade
-        return view('admin.equipements.index', compact('equipements'));
+    if ($search = $request->input('search')) {
+        $query->where(function ($q) use ($search) {
+            $q->where('marque', 'like', "%{$search}%")
+              ->orWhere('reference', 'like', "%{$search}%")
+              ->orWhere('etat', 'like', "%{$search}%");
+        });
     }
+
+    $equipements = $query->paginate(10); // ou autre pagination
+
+    return view('admin.equipements.index', compact('equipements'));
+}
+
  
     public function create()
     {

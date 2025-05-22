@@ -6,12 +6,29 @@
     </x-slot>
 
     <div class="py-6 px-4">
-        <div class="flex justify-end mb-4">
-            <a href="{{ route('admin.techniciens.create') }}" 
-               class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
-                + Ajouter un technicien
-            </a>
-        </div>
+         <div class="flex justify-between mb-4 items-center">
+    <!-- Formulaire de recherche -->
+    <form method="GET" action="{{ route('techniciens.index') }}" class="flex flex-grow items-center space-x-2">
+        <input
+            type="text"
+            name="search"
+            placeholder="Rechercher par nom ou email..."
+            value="{{ request('search') }}"
+            class="border rounded px-4 py-2" 
+    style="width: 500px;" 
+        />
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">
+            🔍
+        </button>
+    </form>
+
+    <!-- Bouton Ajouter -->
+    <a href="{{ route('admin.techniciens.create') }}" 
+       class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded whitespace-nowrap">
+        + Ajouter un technicien
+    </a>
+</div>
+
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
