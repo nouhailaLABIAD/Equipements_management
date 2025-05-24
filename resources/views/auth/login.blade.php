@@ -3,205 +3,233 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SBN - Connexion</title>
+    <title>SRM - Connexion</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --text: #1f2937;
-            --light-text: #6b7280;
-            --border: #d1d5db;
-            --input-bg: #f9fafb;
+            --primary: #7a1c3f;
+            --primary-hover: #5e152f;
+            --secondary: #9e2a5b;
+            --text: #2d3748;
+            --light-text: #718096;
+            --border: #e2e8f0;
+            --input-bg: #f7fafc;
             --white: #ffffff;
-            --form-bg: #ffffff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --focus-ring: rgba(122, 28, 63, 0.3);
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #f3f4f6;
-            color: var(--text);
             margin: 0;
             padding: 0;
             min-height: 100vh;
             display: flex;
+            background-color: #f9fafb;
+            line-height: 1.5;
+        }
+        
+        .left-column {
+            flex: 0.6;
+            background-image: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
             flex-direction: column;
-        }
-        
-        .logo-container {
+            justify-content: center;
+            align-items: center;
             padding: 2rem;
+            color: white;
+            text-align: center;
         }
         
-        .logo {
-        width: 150px;
-        height: 90px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 15px;
-    }
-        
-        .login-wrapper {
-            flex: 1;
+        .right-column {
+            flex: 1.1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 1.5rem;
+            padding: 2rem;
+            background-color: #f9fafb;
         }
         
-        .login-card {
+        .logo-container {
+            margin-bottom: 2.5rem;
+        }
+        
+        .logo {
+            width: 400px;
+            height: auto;
+            object-fit: contain;
+        }
+        
+        .left-column h1 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .left-column h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-top: 0;
+        }
+        
+        .login-form-container {
             width: 100%;
-            max-width: 500px; /* Carte agrandie (était à 420px) */
-            background: var(--form-bg);
-            border-radius: 0.75rem;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            max-width: 420px;
+            padding: 0;
         }
         
         .login-header {
-            padding: 2.5rem 2.5rem 1.5rem; /* Padding augmenté */
+            margin-bottom: 2rem;
             text-align: center;
         }
         
         .login-title {
-            font-size: 1.75rem; /* Taille de police augmentée */
+            font-size: 1.5rem;
             font-weight: 600;
-            margin: 0;
+            margin: 0 0 0.25rem 0;
             color: var(--text);
         }
         
-        .login-body {
-            padding: 0 2.5rem 2.5rem; /* Padding augmenté */
-        }
-        
-        .login-form {
-            max-width: 380px; /* Formulaire légèrement élargi */
-            margin: 0 auto;
+        .login-subtitle {
+            font-size: 0.9375rem;
+            color: var(--light-text);
         }
         
         .form-group {
-            margin-bottom: 1.75rem; /* Espacement augmenté */
-            width: 100%;
+            margin-bottom: 1.5rem;
         }
         
         label {
             display: block;
-            margin-bottom: 0.75rem; /* Espacement augmenté */
-            font-size: 0.9375rem; /* Taille de police légèrement augmentée */
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
             font-weight: 500;
             color: var(--text);
         }
         
         input {
             width: 100%;
-            padding: 1rem; /* Padding augmenté */
+            padding: 0.875rem;
             background-color: var(--input-bg);
             border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            font-size: 1rem; /* Taille de police augmentée */
+            border-radius: 0.375rem;
+            font-size: 0.9375rem;
             transition: all 0.2s;
             box-sizing: border-box;
+        }
+        
+        input:hover {
+            border-color: #cbd5e0;
         }
         
         input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px var(--focus-ring);
             background-color: var(--white);
         }
         
-        .options-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 2rem 0; /* Espacement augmenté */
+        .login-btn {
             width: 100%;
+            padding: 0.875rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.5rem;
         }
         
-        .remember-me {
-            display: flex;
-            align-items: center;
-            font-size: 0.9375rem; /* Taille de police légèrement augmentée */
-            color: var(--light-text);
-        }
-        
-        .remember-me input {
-            width: 1.25rem; /* Taille augmentée */
-            height: 1.25rem; /* Taille augmentée */
-            margin-right: 0.75rem; /* Espacement augmenté */
+        .login-btn:hover {
+            background-color: var(--primary-hover);
         }
         
         .forgot-password {
+            display: block;
+            text-align: right;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.9375rem; /* Taille de police légèrement augmentée */
+            font-weight: 500;
         }
         
         .forgot-password:hover {
             text-decoration: underline;
         }
         
-        .login-btn {
-            width: 100%;
-            padding: 1rem; /* Padding augmenté */
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            font-size: 1rem; /* Taille de police augmentée */
-            cursor: pointer;
-            transition: background-color 0.2s;
-            box-sizing: border-box;
+        @media (max-width: 1024px) {
+            .left-column {
+                flex: 0.7;
+            }
+            .right-column {
+                flex: 1;
+            }
         }
         
-        .login-btn:hover {
-            background-color: var(--primary-hover);
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .left-column, .right-column {
+                flex: 1;
+                padding: 2rem 1.5rem;
+            }
+            .logo {
+                width: 320px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .logo {
+                width: 280px;
+            }
+            .left-column h1 {
+                font-size: 1.75rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Logo en haut à gauche -->
-    <div class="logo-container">
-        <img src="{{ asset('images/srm.png') }}" alt="SBN Logo" class="logo">
+    <!-- Colonne de gauche -->
+    <div class="left-column">
+        <div class="logo-container">
+            <img src="{{ asset('images/srmLogoWithout.png') }}" alt="Logo SRM" class="logo">
+        </div>
+        <h1>SRM-MS</h1>
+        <h2>Direction provinciale Safi</h2>
     </div>
 
-    <!-- Carte de connexion agrandie -->
-    <div class="login-wrapper">
-        <div class="login-card">
+    <!-- Colonne de droite - Formulaire sans card -->
+    <div class="right-column">
+        <div class="login-form-container">
             <div class="login-header">
-                <h1 class="login-title">Connectez-vous à votre compte</h1>
+                <h1 class="login-title">CONNEXION</h1>
+                <p class="login-subtitle">Connectez-vous pour accéder à votre compte</p>
             </div>
             
-            <div class="login-body">
-                <form method="POST" action="{{ route('login') }}" class="login-form">
-                    @csrf
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
 
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-                    </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                </div>
 
-                    <!-- Mot de passe -->
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <input id="password" type="password" name="password" required>
-                    </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input id="password" type="password" name="password" required>
+                    <a href="{{ route('password.request') }}" class="forgot-password">Mot de passe oublié ?</a>
+                </div>
 
-                    <!-- Options -->
-                    <div class="options-row">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember_me" name="remember">
-                            <label for="remember_me">Se souvenir de moi</label>
-                        </div>
-                        <a href="{{ route('password.request') }}" class="forgot-password">Mot de passe oublié ?</a>
-                    </div>
-
-                    <!-- Bouton de connexion - Mêmes dimensions que les inputs -->
-                    <button type="submit" class="login-btn">SE CONNECTER</button>
-                </form>
-            </div>
+                <button type="submit" class="login-btn">SE CONNECTER</button>
+            </form>
         </div>
     </div>
 </body>

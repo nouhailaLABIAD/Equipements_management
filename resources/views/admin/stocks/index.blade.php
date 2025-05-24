@@ -17,16 +17,19 @@
     class="border rounded px-4 py-2" 
     style="width: 500px;"  
 />
+
             <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 rounded">
                 🔍 Rechercher
             </button>
         </form>
 
         <!-- Bouton Ajouter un stock -->
+        <!-- Bouton Ajouter un stock -->
         <a href="{{ route('admin.stocks.create') }}" 
-           class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded">
-            + Ajouter un stock
+        class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-black font-semibold py-2 px-4 rounded shadow transition">
+            <i class="fas fa-plus"></i> Ajouter un stock
         </a>
+
     </div>
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -52,10 +55,10 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $stock->date_arrivee }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $stock->numero_marche }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex space-x-2">
+                                        <div class="flex items-center space-x-6">
                                             <!-- Modifier -->
                                             <a href="{{ route('admin.stocks.edit', $stock->id) }}" class="text-blue-600 hover:text-blue-800">
-                                                ✏️
+                                                <i class="fas fa-edit text-blue-600 hover:text-blue-800"></i>
                                             </a>
 
                                             <!-- Supprimer -->
@@ -63,9 +66,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="text-red-600 hover:text-red-800 delete-button" data-name="{{ $stock->reference }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
+                                                    <i class="fas fa-trash-alt text-red-600 hover:text-red-800"></i>
                                                 </button>
                                             </form>
 
@@ -94,6 +95,13 @@
 </div>
 
 </x-app-layout>  
+<style>
+    input:focus {
+    outline: none !important;
+    border-color: #9e2a5b !important;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
+}
+</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const deleteButtons = document.querySelectorAll('.delete-button');

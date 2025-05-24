@@ -24,7 +24,7 @@
 
     <!-- Bouton Ajouter -->
     <a href="{{ route('admin.equipements.create') }}" 
-       class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded whitespace-nowrap">
+       class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-black font-semibold py-2 px-4 rounded shadow transition">
         + Ajouter un équipement
     </a>
 </div>
@@ -41,14 +41,14 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Configuration</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date d'Acquisition</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">État</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Historique</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th class="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Type d'équipement
                         </th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             N° Marché
                         </th>
+                        <th class="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Historique</th>
+                        <th class="px-8 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Actions</th>
 
                     </tr>
                 </thead>
@@ -60,24 +60,12 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $equipement->configuration }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $equipement->date_acquisition }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $equipement->etat }}</td>
+                            
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="flex space-x-2">
-                                    <!-- Modifier -->
-                                    <a href="{{ route('admin.equipements.edit', $equipement->id) }}" class="text-blue-600 hover:text-blue-800">
-                                        ✏️
-                                    </a>
-
-                                    <!-- Supprimer -->
-                                    <form action="{{ route('admin.equipements.destroy', $equipement->id) }}" method="POST" class="delete-form">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-800 delete-button" data-name="{{ $equipement->reference }}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
+                                {{ $equipement->stock?->type_equipement ?? '—' }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {{ $equipement->stock?->numero_marche ?? '—' }}
                             </td>
                             <td>
                                 <a href="{{ route('historiques.index', $equipement->id) }}" class="text-blue-500">
@@ -86,12 +74,27 @@
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $equipement->stock?->type_equipement ?? '—' }}
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                {{ $equipement->stock?->numero_marche ?? '—' }}
-                            </td>
+    <div class="flex items-center space-x-4">
+        <!-- Modifier -->
+        <a href="{{ route('admin.equipements.edit', $equipement->id) }}" 
+           class="text-blue-600 hover:text-blue-800"
+           title="Modifier">
+            <i class="fas fa-edit fa-fw"></i>
+        </a>
 
+        <!-- Supprimer -->
+        <form action="{{ route('admin.equipements.destroy', $equipement->id) }}" method="POST" class="delete-form">
+            @csrf
+            @method('DELETE')
+            <button type="submit" 
+                    class="text-red-600 hover:text-red-800 delete-button" 
+                    data-name="{{ $equipement->reference }}"
+                    title="Supprimer">
+                <i class="fas fa-trash-alt fa-fw"></i>
+            </button>
+        </form>
+    </div>
+</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -109,7 +112,13 @@
     </div>
 
 </x-app-layout>
-
+<style>
+    input:focus {
+    outline: none !important;
+    border-color: #9e2a5b !important;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
+}
+</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const deleteButtons = document.querySelectorAll('.delete-button');

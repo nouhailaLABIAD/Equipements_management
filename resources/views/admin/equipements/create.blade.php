@@ -69,6 +69,11 @@
                             class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
                         📥 Importer Excel
                     </button>
+                    <a href="{{ asset('exemples/equipements.xlsx') }}"
+               class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
+               download>
+                📄 Télécharger modèle
+            </a>
                 </div>
             </form>
         </div>

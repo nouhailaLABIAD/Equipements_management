@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h2 class="text-lg font-medium text-gray-900">
             {{ __('Update Password') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        <p class="mt-1 text-sm text-gray-600">
             {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
@@ -32,7 +32,9 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-primary-button class="bg-red-700 hover:bg-red-800 focus:bg-red-800 active:bg-red-900 text-white">
+                {{ __('Save') }}
+            </x-primary-button>
 
             @if (session('status') === 'password-updated')
                 <p
@@ -40,9 +42,37 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600 dark:text-gray-400"
+                    class="text-sm text-gray-600"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>
 </section>
+
+<style>
+    /* Styles personnalisés pour les inputs */
+    .text-input {
+        border-color: #e5e7eb;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    input:focus {
+    outline: none !important;
+    border-color: #9e2a5b !important;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
+}
+    
+    /* Style pour les messages d'erreur */
+    .input-error {
+        color: #c53030;
+        font-size: 0.875rem;
+    }
+    
+    /* Style pour les labels */
+    .input-label {
+        color: #7a1c3f;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+</style>

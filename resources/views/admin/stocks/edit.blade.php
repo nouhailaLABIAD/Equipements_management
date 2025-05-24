@@ -50,3 +50,10 @@
         </div>
     </div>
 </x-app-layout>
+<style>
+    input:focus {
+    outline: none !important;
+    border-color: #9e2a5b !important;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
+}
+</style>

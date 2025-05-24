@@ -7,13 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-light: #6366f1;
-            --primary-dark: #4338ca;
-            --secondary: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --info: #3b82f6;
+            --primary: #7a1c3f;  /* Rouge bordeaux */
+            --primary-light: #9e2a5b;
+            --primary-dark: #5e152f;
+            --secondary: #8b5a2b;  /* Marron/terre */
+            --danger: #c53030;    /* Rouge plus chaud */
+            --warning: #dd6b20;   /* Orange terre */
+            --info: #4c51bf;      /* Bleu profond */
             --dark: #1e293b;
             --light: #f8fafc;
             --gray: #64748b;
@@ -172,7 +172,7 @@
             width: 36px;
             height: 36px;
             border-radius: 10px;
-            background: rgba(79, 70, 229, 0.1);
+            background: rgba(122, 28, 63, 0.1); /* Couleur primaire avec opacité */
             color: var(--primary);
         }
         
@@ -248,9 +248,9 @@
             font-weight: 500;
         }
         
-        .state-neuf { background: rgba(59, 130, 246, 0.1); color: var(--info); }
-        .state-bon { background: rgba(16, 185, 129, 0.1); color: var(--secondary); }
-        .state-hors { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
+        .state-neuf { background: rgba(122, 28, 63, 0.1); color: var(--primary); }
+        .state-bon { background: rgba(139, 90, 43, 0.1); color: var(--secondary); }
+        .state-hors { background: rgba(197, 48, 48, 0.1); color: var(--danger); }
         
         .equipement-ref {
             font-size: 0.75rem;
@@ -299,12 +299,12 @@
         .btn-primary {
             background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
-            box-shadow: 0 1px 2px 0 rgba(79, 70, 229, 0.1);
+            box-shadow: 0 1px 2px 0 rgba(122, 28, 63, 0.1);
         }
         
         .btn-primary:hover {
             background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
-            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(122, 28, 63, 0.2), 0 2px 4px -1px rgba(122, 28, 63, 0.1);
         }
         
         .btn-icon {

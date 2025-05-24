@@ -24,7 +24,7 @@
 
     <!-- Bouton Ajouter -->
     <a href="{{ route('admin.techniciens.create') }}" 
-       class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded whitespace-nowrap">
+       class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-black font-semibold py-2 px-4 rounded shadow transition">
         + Ajouter un technicien
     </a>
 </div>
@@ -48,7 +48,7 @@
                                 <div class="flex space-x-2">
                                     <!-- Modifier -->
                                     <a href="{{ route('admin.techniciens.edit', $tech->id) }}" class="text-blue-600 hover:text-blue-800">
-                                        ✏️
+                                        <i class="fas fa-edit text-blue-600 hover:text-blue-800"></i>
                                     </a>
 
                                     <!-- Supprimer -->
@@ -56,7 +56,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-800 delete-button" data-name="{{ $tech->name }}">
-                                            🗑️
+                                            <i class="fas fa-trash-alt fa-fw"></i>
                                         </button>
                                     </form>
                                 </div>
@@ -68,7 +68,13 @@
         </div>
     </div>
 </x-app-layout>
-
+<style>
+    input:focus {
+    outline: none !important;
+    border-color: #9e2a5b !important;
+    box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
+}
+</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const deleteButtons = document.querySelectorAll('.delete-button');
