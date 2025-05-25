@@ -30,7 +30,7 @@ class StockController extends Controller
         });
     }
 
-    $stocks = $query->paginate(10); // ou simple get()
+    $stocks = $query->paginate(2); // ou simple get()
 
     return view('admin.stocks.index', compact('stocks'));
 }

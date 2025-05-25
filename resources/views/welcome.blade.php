@@ -52,7 +52,7 @@
     }
     
     .logo {
-        width: 150px;
+        width: 200px;
         height: 150px;
         border-radius: 50%;
         object-fit: cover;
@@ -87,8 +87,7 @@
     }
     
     nav ul li a:hover {
-        color: #014F86;
-        background-color: rgba(255, 255, 255, 0.1);
+        color: #5e152f;
     }
     
     .main-content {
@@ -136,9 +135,9 @@
     }
     
     .register-btn {
-        background-color: #014F86;
+        background-color: #5e152f;
         color: white;
-        border: 1px solid #014F86;
+        border: 1px solid #5e152f;
     }
     
     .register-btn:hover {
@@ -192,7 +191,7 @@
     </header>
     
     <main class="main-content">
-        <h1>Bienvenue sur la plateforme SRM</h1>
+        <h1>Bienvenue </h1>
         <p>
             Système de gestion des ressources matérielles pour une optimisation 
             complète de votre parc d'équipements et une meilleure allocation 

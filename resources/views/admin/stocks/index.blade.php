@@ -78,9 +78,11 @@
                     
                 </tbody>
             </table>
-            <div class="mt-4">
-    {{ $stocks->withQueryString()->links() }}
-</div>
+            <div class="mt-6">
+                <div class="bg-gray-100 rounded-lg shadow p-2">
+                {{ $stocks->links() }}
+                </div>
+            </div>
 
         </div>
         

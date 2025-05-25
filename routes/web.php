@@ -86,6 +86,8 @@ Route::middleware(['auth', 'role:admin_general'])->group(function () {
     Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
 Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
 
+Route::post('/chatbot/clear-history', [ChatbotController::class, 'clearHistory'])->name('chatbot.clearHistory');
+
 });
 /*******************************************************TECHNICIEN*******************************************************/
 
@@ -111,6 +113,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
 Route::post('/chatbot/ask', [ChatbotController::class, 'ask'])->name('chatbot.ask');
+Route::post('/chatbot/clear-history', [ChatbotController::class, 'clearHistory'])->name('chatbot.clearHistory');
+
     
 });
 

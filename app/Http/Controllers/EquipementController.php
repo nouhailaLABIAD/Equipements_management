@@ -27,7 +27,7 @@ class EquipementController extends Controller
         });
     }
 
-    $equipements = $query->paginate(10); // ou autre pagination
+    $equipements = $query->paginate(5); // ou autre pagination
 
     return view('admin.equipements.index', compact('equipements'));
 }

@@ -99,7 +99,13 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-6">
+                <div class="bg-gray-100 rounded-lg shadow p-2">
+                {{ $equipements->links() }}
+                </div>
+            </div>
         </div>
+      
     </div>
 
     <div class="flex justify-end space-x-4 mb-4">
@@ -119,6 +125,7 @@
     box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2) !important;
 }
 </style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const deleteButtons = document.querySelectorAll('.delete-button');
