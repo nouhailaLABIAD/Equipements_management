@@ -4,7 +4,11 @@
             {{ __('Ajouter un Stock') }}
         </h2>
     </x-slot>
-
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px;">
+        Ajouter un stock
+    </h2>
+</div> 
     <div class="py-6">
     <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow" style="min-height: 400px; overflow-y: auto;">
         <form action="{{ route('admin.stocks.store') }}" method="POST">
@@ -57,12 +61,12 @@
                            class="border border-gray-300 rounded px-3 py-2 w-full" required>
                     <button type="submit"
                             class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
-                        📥 Importer Excel
+                         <i class="fas fa-file-excel"></i>Importer Excel
                     </button>
                     <a href="{{ asset('exemples/stocks.xlsx') }}"
-               class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
+               class="bg-blue-600 hover:bg-blue-700 text-gray font-bold py-2 px-4 rounded"
                download>
-                📄 Télécharger modèle
+                <i class="fas fa-file-download"></i> Télécharger modèle
             </a>
                 </div>
             </form>

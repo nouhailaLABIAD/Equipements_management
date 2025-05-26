@@ -17,8 +17,8 @@
             class="border rounded px-4 py-2" 
     style="width: 500px;" 
         />
-        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">
-            🔍
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-black font-bold px-4 py-2 rounded">
+            <i class="fas fa-search"></i> 
         </button>
     </form>
 
@@ -29,7 +29,11 @@
     </a>
 </div>
 
-        
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-black-900" style="font-family: Verdana; font-size: 23px; padding: 10px;">
+        Liste des équipements
+    </h2>
+</div>
 
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -110,10 +114,10 @@
 
     <div class="flex justify-end space-x-4 mb-4">
         <a href="{{ route('equipements.export.pdf') }}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            📄 Exporter PDF
+            <i class="fas fa-file-pdf"></i> Exporter PDF
         </a>
         <a href="{{ route('equipements.export.excel') }}" class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
-            📊 Exporter Excel
+            <i class="fas fa-file-excel"></i> Exporter Excel
         </a>
     </div>
 

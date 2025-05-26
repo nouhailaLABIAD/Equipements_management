@@ -4,7 +4,11 @@
             {{ __('Ajouter un équipement') }}
         </h2>
     </x-slot>
-
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px;">
+        Ajouter un équipement
+    </h2>
+</div>
     <div class="py-6 px-4">
         <!-- FORMULAIRE D'AJOUT MANUEL -->
         <form action="{{ route('equipements.store') }}" method="POST" class="mb-6">
@@ -67,12 +71,12 @@
                            class="border border-gray-300 rounded px-3 py-2 w-full" required>
                     <button type="submit"
                             class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
-                        📥 Importer Excel
+                        <i class="fas fa-file-excel"></i> Importer Excel
                     </button>
                     <a href="{{ asset('exemples/equipements.xlsx') }}"
                class="bg-blue-600 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
                download>
-                📄 Télécharger modèle
+                <i class="fas fa-file-download"></i> Télécharger modèle
             </a>
                 </div>
             </form>

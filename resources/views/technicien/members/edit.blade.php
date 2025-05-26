@@ -4,7 +4,11 @@
             Modifier un membre
         </h2>
     </x-slot>
-
+<div class="px-6 py-4 text-center">
+            <h2 class="text-2xl font-bold text-gray-800" style="font-family: Verdana; padding: 10px 0;">
+                Modifier un membres
+            </h2>
+        </div>
     <div class="py-6 px-4">
         <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
             <form method="POST" action="{{ route('technicien.members.update', $member->id) }}">

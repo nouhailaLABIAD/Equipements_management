@@ -17,9 +17,9 @@
     class="border rounded px-4 py-2" 
     style="width: 500px;"  
 />
-
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 rounded">
-                🔍 Rechercher
+ 
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-black font-bold px-4 rounded">
+                 <i class="fas fa-search"></i> 
             </button>
         </form>
 
@@ -31,8 +31,14 @@
         </a>
 
     </div>
+    <div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px; padding: 10px;">
+        Liste des stocks
+    </h2>
+</div> 
 
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+             
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
@@ -84,15 +90,15 @@
                 </div>
             </div>
 
-        </div>
+        </div> 
         
     </div>
     <div class="flex justify-end space-x-4 mb-4">
     <a href="{{ route('admin.stocks.export.pdf') }}" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-        📄 Exporter PDF
+        <i class="fas fa-file-pdf"></i> Exporter PDF
     </a>
     <a href="{{ route('admin.stocks.export.excel') }}" class="bg-green-600 hover:bg-green-700 text-black font-bold py-2 px-4 rounded">
-        📊 Exporter Excel
+         <i class="fas fa-file-excel"></i> Exporter Excel
     </a>
 </div>
 

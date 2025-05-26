@@ -4,7 +4,11 @@
             {{ __('Modifier un stock') }}
         </h2>
     </x-slot>
-
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px;">
+        Modifier un stock
+    </h2>
+</div>
     <div class="py-6 px-4">
         <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
             <form method="POST" action="{{ route('admin.stocks.update', $stock->id) }}">

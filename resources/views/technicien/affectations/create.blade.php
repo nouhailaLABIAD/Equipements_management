@@ -8,7 +8,10 @@
     <!-- Tom Select (version locale, sans AJAX) -->
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
-
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px; padding: 10px;">
+Compléter l'affectation     </h2>
+</div> 
     <div class="py-6">
         <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow">
             <form method="POST" action="{{ route('technicien.affectations.store') }}">

@@ -4,7 +4,11 @@
             {{ __('Historique des actions des techniciens') }}
         </h2>
     </x-slot>
-
+<div class="px-6 py-4 text-center">
+    <h2 class="text-2xl font-medium text-gray-900" style="font-family: Verdana; font-size: 23px; padding: 10px;">
+        Historique des actions des techniciens
+    </h2>
+</div>
     <div class="py-6 px-4">
         <div class="bg-white shadow overflow-hidden sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
